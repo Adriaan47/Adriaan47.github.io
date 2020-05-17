@@ -17,14 +17,14 @@ module.exports = function renderSCSS() {
         includePaths: [
             upath.resolve(upath.dirname(__filename), '../node_modules')
         ],
-      });
+    });
 
     const destPathDirname = upath.dirname(destPath);
     if (!sh.test('-e', destPathDirname)) {
         sh.mkdir('-p', destPathDirname);
     }
 
-    postcss([ autoprefixer ]).process(results.css, {from: 'styles.css', to: 'styles.css'}).then(result => {
+    postcss([autoprefixer]).process(results.css, { from: 'styles.css', to: 'styles.css' }).then(result => {
         result.warnings().forEach(warn => {
             console.warn(warn.toString())
         })
@@ -36,7 +36,7 @@ module.exports = function renderSCSS() {
 const entryPoint = `/*!
 * Start Bootstrap - ${packageJSON.title} v${packageJSON.version} (${packageJSON.homepage})
 * Copyright 2013-${new Date().getFullYear()} ${packageJSON.author}
-* Licensed under ${packageJSON.license} (https://github.com/BlackrockDigital/${packageJSON.name}/blob/master/LICENSE)
+* Licensed under ${packageJSON.license} (https://github.com/Adriaan47/${packageJSON.name}/blob/master/LICENSE)
 */
 @import "${stylesPath}"
 `
